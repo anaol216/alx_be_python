@@ -24,7 +24,8 @@ while True:  # Loop so user can enter tasks again if they want
         reminder += ". Consider completing it when you have free time."
 
     # Step 4: Show the customized reminder
-    print("\nReminder:", reminder)
+    print(f"Reminder: {reminder}")
+
 
     # Step 5: Ask if user wants to add another task
     again = input("\nWould you like to enter another task? (yes/no): ").lower()
