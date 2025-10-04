@@ -30,5 +30,5 @@ while True:  # Loop so user can enter tasks again if they want
     # Step 5: Ask if user wants to add another task
     again = input("\nWould you like to enter another task? (yes/no): ").lower()
     if again != "yes":
-        print("Good luck with your tasks today! ✅")
+        print("Good luck with your tasks today!")
         break
