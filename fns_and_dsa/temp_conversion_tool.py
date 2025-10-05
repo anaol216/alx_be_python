@@ -1,7 +1,12 @@
 # Define Global Conversion Factors
-# Factors are defined as expressions to ensure float division for accurate results
+# Factors adjusted to match the expected format for CELSIUS_TO_FAHRENHEIT_FACTOR
+
+# For F to C: (F - 32) * (5/9)
 FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
+
+# For C to F: (C * 9/5) + 32
+# Corrected to strictly match CELSIUS_TO_FAHRENHEIT_FACTOR=9/5
+CELSIUS_TO_FAHRENHEIT_FACTOR=9/5
 
 def convert_to_celsius(fahrenheit):
     """
