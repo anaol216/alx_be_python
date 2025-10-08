@@ -14,6 +14,7 @@ class BankAccount:
         if amount > self.balance:
             raise ValueError("Insufficient funds.")
         self.balance -= amount
+        print(f"Withdrew: ${amount}")
 
     def display_balance(self) -> float:
         return self.balance
