@@ -1,20 +1,18 @@
 # main.py (Provided for Testing)
 
-from polymorphism_demo import Shape, Rectangle, Circle
-import math
+from class_static_methods_demo import Calculator
 
 def main():
-    # Create a list containing different shape objects
-    shapes = [
-        Rectangle(10, 5),
-        Circle(7)
-    ]
+    # Using the static method (@staticmethod)
+    # The method runs like a regular function, independent of the class state.
+    sum_result = Calculator.add(10, 5)
+    print(f"The sum is: {sum_result}")
 
-    # Iterate through the list and call area() on each object
-    for shape in shapes:
-        # The same method call (shape.area()) produces different results
-        # based on the object's class (Polymorphism)
-        print(f"The area of the {shape.__class__.__name__} is: {shape.area()}")
+    # Using the class method (@classmethod)
+    # The method automatically receives the class itself as 'cls', 
+    # allowing it to print the class attribute.
+    product_result = Calculator.multiply(10, 5)
+    print(f"The product is: {product_result}")
 
 if __name__ == "__main__":
     main()
