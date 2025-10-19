@@ -1,4 +1,4 @@
-# library_system.py
+# library_system.py (REVISED with __str__)
 
 class Book:
     """
@@ -9,8 +9,10 @@ class Book:
         self.title = title
         self.author = author
 
-    def get_details(self):
-        """Returns the basic details of the book."""
+    def __str__(self):
+        """
+        Provides a user-friendly string representation for the Book.
+        """
         return f"Book: {self.title} by {self.author}"
 
 class EBook(Book):
@@ -22,11 +24,13 @@ class EBook(Book):
         super().__init__(title, author)
         self.file_size = file_size # Unique attribute
 
-    def get_details(self):
-        """Overrides the base method to include file size."""
-        # Call the base class method to get common details
-        base_details = super().get_details().replace("Book: ", "EBook: ")
-        return f"{base_details}, File Size: {self.file_size}KB"
+    def __str__(self):
+        """
+        Overrides __str__ to include file size for EBook.
+        """
+        # Call the base class __str__ and modify the prefix
+        base_str = super().__str__().replace("Book: ", "EBook: ")
+        return f"{base_str}, File Size: {self.file_size}KB"
 
 class PrintBook(Book):
     """
@@ -37,11 +41,13 @@ class PrintBook(Book):
         super().__init__(title, author)
         self.page_count = page_count # Unique attribute
 
-    def get_details(self):
-        """Overrides the base method to include page count."""
-        # Call the base class method to get common details
-        base_details = super().get_details().replace("Book: ", "PrintBook: ")
-        return f"{base_details}, Page Count: {self.page_count}"
+    def __str__(self):
+        """
+        Overrides __str__ to include page count for PrintBook.
+        """
+        # Call the base class __str__ and modify the prefix
+        base_str = super().__str__().replace("Book: ", "PrintBook: ")
+        return f"{base_str}, Page Count: {self.page_count}"
 
 class Library:
     """
@@ -56,8 +62,9 @@ class Library:
         self.books.append(book)
 
     def list_books(self):
-        """Prints the details of each book in the library using the book's specific get_details method (Polymorphism)."""
+        """
+        Prints the details of each book by using the built-in print() function,
+        which implicitly calls the object's __str__ method (Polymorphism).
+        """
         for book in self.books:
-            print(book.get_details())
-
-# End of library_system.py
+            print(book) # This implicitly calls book.__str__()
