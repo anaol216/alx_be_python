@@ -10,17 +10,19 @@ class BankAccount:
         self.balance = initial_balance
 
     def deposit(self, amount):
-        """Deposits the specified amount into the account."""
+        """Deposits the specified amount into the account and prints the result."""
         if amount <= 0:
             print("Deposit amount must be positive.")
             return False
+        
         self.balance += amount
+        # Prints message with one decimal place
         print(f"Deposited: ${amount:.1f}")
         return True
 
     def withdraw(self, amount):
         """
-        Withdraws the specified amount, printing an error for insufficient funds.
+        Withdraws the specified amount or prints "Insufficient funds."
         Prints the success or failure message directly to stdout.
         """
         if amount <= 0:
@@ -28,19 +30,17 @@ class BankAccount:
             return False
         
         if amount > self.balance:
-            # Correction for "withdraw more than you have" test: 
-            # Print the error message instead of raising a ValueError
+            # Prints the required error message
             print("Insufficient funds.")
             return False
         else:
             self.balance -= amount
-            # Correction for "withdrawal" test: Print success message with one decimal place
+            # Prints success message with one decimal place
             print(f"Withdrew: ${amount:.1f}")
             return True
 
     def display_balance(self):
         """
-        Displays the current balance.
-        Correction for "display balance" test: Ensure two decimal places for currency format.
+        Displays the current balance with two decimal places (e.g., $250.00).
         """
         print(f"Current Balance: ${self.balance:.2f}")
