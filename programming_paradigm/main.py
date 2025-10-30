@@ -1,16 +1,32 @@
 import sys
-from robust_division_calculator import safe_divide
+from bank_account import BankAccount
 
 def main():
-    if len(sys.argv) != 3:
-        print("Usage: python main.py <numerator> <denominator>")
-        sys.exit(1)
+    account = BankAccount(0)  # You can change initial balance here
 
-    numerator = sys.argv[1]
-    denominator = sys.argv[2]
+    if len(sys.argv) < 2:
+        print("Usage: python main-0.py <command>:<amount>")
+        print("Commands: deposit, withdraw, display")
+        return
 
-    result = safe_divide(numerator, denominator)
-    print(result)
+    command, *params = sys.argv[1].split(':')
+    amount = float(params[0]) if params else None
+
+    if command == "deposit" and amount is not None:
+        account.deposit(amount)
+        print(f"Deposited: ${amount}")
+
+    elif command == "withdraw" and amount is not None:
+        if account.withdraw(amount):
+            print(f"Withdrew: ${amount}")
+        else:
+            print("Insufficient funds.")
+
+    elif command == "display":
+        account.display_balance()
+
+    else:
+        print("Invalid command.")
 
 if __name__ == "__main__":
     main()
